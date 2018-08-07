@@ -5,10 +5,10 @@ import YTSearch from 'youtube-api-search'
 import SearchBar from './components/searchBar'
 import VideoList from './components/VideoList'
 import VideoDetail from './components/VideoDetail'
-const API_KEY = 'AIzaSyAf4zSrCvUMWHQHT0Q7e0u3uvUOvBxCiMk'
+const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY
+require('dotenv').config();
 
 class App extends Component {
-  
   constructor(props) {
     super(props)
     
@@ -21,7 +21,7 @@ class App extends Component {
   }
   
   videoSearch = (term) => {
-    YTSearch({key: API_KEY, term: term}, (videos) => {
+    YTSearch({key: REACT_APP_API_KEY, term: term}, (videos) => {
       this.setState({ 
         videos,
         selectedVideo: videos[0],
